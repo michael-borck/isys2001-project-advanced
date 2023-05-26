@@ -18,6 +18,8 @@ To get started, you'll need to install Jupyter Notebook. If you haven't installe
 
 You can download Anaconda [here](https://www.anaconda.com/distribution/). For more detailed installation instructions, visit the [official Jupyter installation guide](https://jupyter.org/install).
 
+Certainly! Here's how you can modify the instructions to use a GitHub personal access token for authentication instead:
+
 ### Alternative: Google Colab
 
 If you prefer not to install anything, Google Colaboratory (also known as Colab) is a great alternative. It's a free Jupyter notebook environment that runs entirely in the cloud. It includes many of the most popular Python libraries, so it's perfect for this project.
@@ -29,13 +31,7 @@ To get started with Google Colab:
 3. Click on the `GitHub` tab
 4. Enter the URL of this repository
 
-Next, clone this repository to your local machine using:
-
-```
-git clone https://github.com/YourUsername/YourRepoName.git
-```
-
-If you're using Google Colab, you can skip the local clone and load files directly from the repository within your Colab notebook. Here's an example of how you can load a .ipynb file from GitHub to Colab:
+Next, clone this repository to your Google Colab environment using:
 
 ```python
 !pip install -q import-ipynb
@@ -43,14 +39,15 @@ import import_ipynb
 from getpass import getpass
 import os
 
-user = getpass('GitHub user')
-password = getpass('GitHub password')
-os.environ['GITHUB_AUTH'] = user + ':' + password
+# This will prompt for the GitHub personal access token
+token = getpass('Enter your personal access token for GitHub')
+
+os.environ['GITHUB_AUTH'] = token
 
 !git clone https://$GITHUB_AUTH@github.com/YourUsername/YourRepoName.git
 ```
 
-Note: The above will prompt you for your GitHub username and password to clone private repositories. For public repositories, you don't need authentication and you can clone it directly using `!git clone`.
+**Note:** You can create a personal access token by going to your GitHub settings -> Developer settings -> Personal access tokens -> Generate new token. Make sure to copy your new personal access token when it's generated as you won't be able to see it again. For more information, check the [official GitHub documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 After you have cloned the repository, you can open the notebook:
 
